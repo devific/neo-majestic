@@ -1,15 +1,15 @@
-import { useState, useEffect } from 'react';
-import { Menu, X } from 'lucide-react';
-import { Button } from './ui/Button';
-import { cn } from '../utils/cn';
-import { motion, AnimatePresence } from 'framer-motion';
+import { useState, useEffect } from "react";
+import { Menu, X } from "lucide-react";
+import { Button } from "./ui/Button";
+import { cn } from "../utils/cn";
+import { motion, AnimatePresence } from "framer-motion";
 
 const NAV_LINKS = [
-  { name: 'HOME', href: '#home' },
-  { name: 'ROOMS', href: '#rooms' },
-  { name: 'RESTAURANTS', href: '#restaurants' },
-  { name: 'AMENITIES', href: '#amenities' },
-  { name: 'CASINO', href: '#entertainment' },
+  { name: "HOME", href: "#home" },
+  { name: "ROOMS", href: "#rooms" },
+  { name: "RESTAURANTS", href: "#restaurants" },
+  { name: "AMENITIES", href: "#amenities" },
+  { name: "CASINO", href: "#entertainment" },
 ];
 
 export const Navbar = () => {
@@ -20,24 +20,31 @@ export const Navbar = () => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 50);
     };
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
   return (
     <nav
       className={cn(
         "fixed top-0 left-0 right-0 z-50 transition-all duration-300 border-b border-transparent",
-        isScrolled ? "bg-navy/90 backdrop-blur-lg py-4 border-white/10 shadow-xl" : "bg-transparent py-6"
+        isScrolled
+          ? "bg-navy/50 backdrop-blur-lg py-4 border-white/10 shadow-xl"
+          : "bg-transparent py-6",
       )}
     >
       <div className="max-w-7xl mx-auto px-6 flex items-center justify-between">
         {/* Logo */}
         <a href="#" className="flex flex-col z-50">
-          <span className={cn("font-serif text-2xl font-bold tracking-wider transition-colors", isScrolled ? "text-white" : "text-white")}>
+          <span
+            className={cn(
+              "font-serif text-2xl font-bold tracking-wider transition-colors",
+              isScrolled ? "text-white" : "text-white",
+            )}
+          >
             HOTEL NEO MAJESTIC
           </span>
-          <span className={cn("text-[0.65rem] tracking-[0.3em] uppercase opacity-80", isScrolled ? "text-gold" : "text-white")}>
+          <span className="text-[0.65rem] tracking-[0.3em] uppercase opacity-80 text-white">
             Goa • India
           </span>
         </a>
@@ -50,7 +57,7 @@ export const Navbar = () => {
               href={link.href}
               className={cn(
                 "text-sm font-medium tracking-wide transition-colors hover:text-gold relative group",
-                isScrolled ? "text-white/90" : "text-white"
+                isScrolled ? "text-white/90" : "text-white",
               )}
             >
               {link.name}
@@ -61,7 +68,11 @@ export const Navbar = () => {
 
         {/* CTA */}
         <div className="hidden md:block">
-          <Button variant="primary" size="sm" className="font-semibold tracking-wide">
+          <Button
+            variant="primary"
+            size="sm"
+            className="font-semibold tracking-wide"
+          >
             BOOK A ROOM
           </Button>
         </div>
